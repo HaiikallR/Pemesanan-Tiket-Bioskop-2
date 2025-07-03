@@ -291,26 +291,27 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="card text-center mb-4 back">
+            <div class="card text-center mb-4">
                 <div class="card-header">{{ __('Bioskop') }}</div>
                 <div class="card-body">
                     <p>{{ __('Selamat Datang di Bioskop') }}</p>
+
+                    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            @foreach ($detail as $key => $item)
+                            <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                                <img src="{{ asset('image/' . $item->foto) }}" class="d-block w-300 h-400"
+                                    alt="{{ $item->judul }}" data-aos="fade-up">
+                                {{-- <div class="carousel-caption-custom d-none d-md-block">
+                                    <h5><strong>{{ $item->judul }}</strong></h5>
+                                <p><strong>{{ $item->deskripsi }}</strong></p>
+                            </div> --}}
+                        </div>
+                        @endforeach
+                    </div>
                 </div>
             </div>
 
-            <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    @foreach ($detail as $key => $item)
-                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                        <img src="{{ asset('image/' . $item->foto) }}" class="d-block w-100"
-                            alt="{{ $item->judul }}" data-aos="fade-up">
-                        {{-- <div class="carousel-caption-custom d-none d-md-block">
-                                    <h5><strong>{{ $item->judul }}</strong></h5>
-                        <p><strong>{{ $item->deskripsi }}</strong></p>
-                    </div> --}}
-                </div>
-                @endforeach
-            </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
                 data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
